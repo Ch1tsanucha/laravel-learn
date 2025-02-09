@@ -1,10 +1,4 @@
-<html lang="en">
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ninja network</title>
-</head>
-
+<x-layout>
 <body>
     <h1>
         Welcom to ninja
@@ -12,9 +6,12 @@
     <p>
         click to find ninja
     </p>
-    <a href="" class="btn">
+    <a href="/ninja" class="btn">
         Find ninja
     </a>
+    <p></p>
+    <a href="/temp" class="btn">
+        go to temp
+    </a>
 </body>
-
-</html>
+</x-layout>
