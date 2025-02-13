@@ -2,16 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Jobs;
-
-
-Route::get('/', function () {
-    dd(Jobs::all());
-    // return view('welcome');
-});
+use App\Models\User;
 
 // Route::get('/', function () {
-//     return view('home');
+//     // dd(Jobs::all());
+//     return view('welcome');
 // });
+
+Route::get('/', function () {
+    return view('home');
+});
 
 Route::get('/jobs', function () {
 
@@ -28,5 +28,5 @@ Route::get(
 );
 
 Route::get('/contact', function () {
-    return view('contact');
+    return view('contact',['users'=>User::all()]);
 });
