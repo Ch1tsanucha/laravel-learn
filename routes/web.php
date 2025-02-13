@@ -5,12 +5,13 @@ use App\Models\Jobs;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    dd(Jobs::all());
+    // return view('welcome');
 });
 
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
 
 Route::get('/jobs', function () {
 
