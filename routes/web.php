@@ -16,14 +16,14 @@ Route::get('/', function () {
 Route::get('/jobs', function () {
 
     return view('jobs', [
-        'jobs' => jobs::getAll()
+        'jobs' => jobs::all()
     ]);
 });
 
 Route::get(
     '/jobs/{id}',
     function ($id) {
-        return view('job', ['job' => Jobs::getById($id)]);
+        return view('job', ['job' => Jobs::find($id)]);
     }
 );
 
