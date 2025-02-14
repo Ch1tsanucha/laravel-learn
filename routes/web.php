@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Employer;
 use Illuminate\Support\Facades\Route;
 use App\Models\Jobs;
 use App\Models\User;
@@ -28,5 +29,5 @@ Route::get(
 );
 
 Route::get('/contact', function () {
-    return view('contact',['users'=>User::all()]);
+    return view('contact',['users'=>Employer::all()]);
 });
