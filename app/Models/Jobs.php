@@ -13,6 +13,10 @@ class Jobs extends Model{
         return $this->belongsTo(Employer::class);
     }
 
+    public function tags (){
+        return $this->belongsToMany(Tag::class,'job_tags',foreignPivotKey:'job_listings_id');
+    }
+
     // public static function getAll(): array{
     //     return [
     //         [

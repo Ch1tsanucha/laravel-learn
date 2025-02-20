@@ -14,9 +14,7 @@
                 {{ $jj->title }} 
                 @endforeach
 
-                @for ($i = 0;)
-                
-                @endfor
+          
            
         </p>
         </a>
