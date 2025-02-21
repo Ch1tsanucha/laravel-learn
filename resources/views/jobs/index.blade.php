@@ -7,28 +7,44 @@
         <div class="grid grid-cols-2 justify-center items-center gap-10">
             @foreach ($jobs as $job)
             <div class="flex justify-center">
-                <div class="p-3 rounded-sm border-4 border-grey-500 px-10 w-10/12">
-                    <a href="/jobs/{{$job->id}}">
-                        <p class="text-blue-500">
-                            <strong>Title: {{ $job->title }} </strong> 
-                        </p>
-                        <p>
+                <div class="p-3 rounded-sm border-4 border-grey-500 px-10 w-10/12 grid grid-cols-[1fr_0.25fr]">
+                    <div class="h-1/2">
+                        <a href="/jobs/{{$job->id}}">
+                            <div class="text-blue-500 flex justify-between  ">
+                                <strong>Title: {{ $job->title }} </strong>
+                            </div>
+                            <!-- <p> -->
                             <!-- {{ $job->employer->name }} is -->
                             {{-- @if ($job->employer->job->isNotEmpty())  --}}
-                                <!-- @foreach ($job->employer->job as $jj)
+                            <!-- @foreach ($job->employer->job as $jj)
                                     {{ $jj->title }} 
                                 @endforeach -->
                             {{-- @else
                                 No job found --}}
                             {{-- @endif --}}
-                        </p>
-                        <p>
-                            Salary : {{ $job->salary }}
-                        </p>
-                    </a>
+                            <!-- </p> -->
+                            <p>
+                                Salary : {{ $job->salary }} and Id is {{$job->id}}
+                            </p>
+                        </a>
+                    </div>
+
+                    <div class="w-full h-1/2">
+
+                    <form action="{{ url('/jobs/delete/' . $job->id) }}" method="POST" class="w-full flex justify-end">
+    @csrf
+    @method('DELETE') <!-- Laravel's method spoofing -->
+    <button type="submit" class="bg-red-500 w-5 h-5 flex justify-center items-center text-white">
+        x
+    </button>
+</form>
+
+
+                    </div>
+
                 </div>
             </div>
-               
+
             @endforeach
         </div>
 

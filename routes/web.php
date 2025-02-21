@@ -18,6 +18,7 @@ Route::get('/', function () {
 Route::get('/jobs', [JobController::class,'index']);
 Route::get('/jobs/create', [JobController::class,'create_page']);
 Route::post('/jobs',[JobController::class,'create']);
+Route::delete('/jobs/delete/{id}',[JobController::class,'destroy']);
 Route::get('/jobs/{id}',[JobController::class,'show']);
 
 Route::get('/contact', function () {
