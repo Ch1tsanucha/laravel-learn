@@ -13,11 +13,11 @@
                             <strong>Title: {{ $job->title }} </strong> 
                         </p>
                         <p>
-                            {{ $job->employer->name }} is
+                            <!-- {{ $job->employer->name }} is -->
                             {{-- @if ($job->employer->job->isNotEmpty())  --}}
-                                @foreach ($job->employer->job as $jj)
+                                <!-- @foreach ($job->employer->job as $jj)
                                     {{ $jj->title }} 
-                                @endforeach
+                                @endforeach -->
                             {{-- @else
                                 No job found --}}
                             {{-- @endif --}}
