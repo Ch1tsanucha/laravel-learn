@@ -8,13 +8,11 @@ use App\Models\Jobs;
 class JobController extends Controller
 {
     public function index()
-    {
-        $jobs = Jobs::with('employer.job')->latest()->simplePaginate(10);
-        return view('jobs.index', [
-            'jobs' => $jobs,
-            'ishidden' => true,
-        ]);
-    }
+{
+    $jobs = Jobs::with('employer.job')->latest()->simplePaginate(10) ?? collect(); // Ensure it's a collection
+    return view('jobs.index', compact('jobs'));
+}
+
 
     public function create_page()
     {
