@@ -30,14 +30,22 @@
                     </div>
 
                     <div class="w-full h-1/2">
+                        <div>
+                            <form action="{{ url('/jobs/delete/' . $job->id) }}" method="POST" class="w-full flex justify-end">
+                                @csrf
+                                @method('DELETE') <!-- Laravel's method spoofing -->
+                                <button type="submit" class="bg-red-500 w-5 h-5 flex justify-center items-center text-white">
+                                    x
+                                </button>
+                            </form>
+                        </div>
+                        <div class="md:w-full md:flex md:justify-end">
+                            <a href="/jobs/update/{{$job->id}}" class="bg-green-500 w-5 h-5 flex justify-center items-center text-white">
+                                ^
+                            </a>
+                        </div>
 
-                    <form action="{{ url('/jobs/delete/' . $job->id) }}" method="POST" class="w-full flex justify-end">
-    @csrf
-    @method('DELETE') <!-- Laravel's method spoofing -->
-    <button type="submit" class="bg-red-500 w-5 h-5 flex justify-center items-center text-white">
-        x
-    </button>
-</form>
+
 
 
                     </div>

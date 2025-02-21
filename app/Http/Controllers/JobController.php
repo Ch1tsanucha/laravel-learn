@@ -11,13 +11,20 @@ class JobController extends Controller
     {
         $jobs = Jobs::with('employer.job')->latest()->simplePaginate(10);
         return view('jobs.index', [
-            'jobs' => $jobs
+            'jobs' => $jobs,
+            'ishidden' => true,
         ]);
     }
 
     public function create_page()
     {
         return view('jobs.create', []);
+    }
+
+    public function update_page($id)
+    {
+        $jobs = Jobs::find($id);
+        return view('jobs.update', ['job' => $jobs]);
     }
 
     public function show($id)
@@ -28,10 +35,14 @@ class JobController extends Controller
 
     public function create(Request $request)
     {
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'salary' => 'nullable|string|max:255',
+        ]);
 
         Jobs::create([
-            'title' => $request->input('title'),
-            'salary' => $request->input('salary'),
+            'title' => $validated['title'],
+            'salary' => $validated['salary'] ?? "0",
             'employer_id' => 1
         ]);
 
@@ -52,4 +63,22 @@ class JobController extends Controller
          return response()->json(['message' => 'Item not found'], 404);
         // return redirect('/jobs');
     }
+
+    public function update(Request $request, $id)
+{
+
+    $job = Jobs::find($id);
+
+    if ($job) {
+        $job->update([
+            'title' => $request->input('title'),
+            'salary' => $request->input('salary'),
+        ]);
+        return redirect('/jobs');
+    }
+
+    return response()->json(['message' => 'Job not found'], 404);
+}
+
+
 }

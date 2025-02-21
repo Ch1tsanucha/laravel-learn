@@ -22,6 +22,11 @@
           <input type="text" name="title" id="title" autocomplete="organization" class="border-2 border-grey-500 block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 placeholder:text-gray-400">
         </div>
       </div>
+      <div>
+        @error('title')
+        <p>{{ $message }}</p>
+        @enderror
+      </div>
       <div class="sm:col-span-2">
         <label for="salary" class="block text-sm/6 font-semibold text-gray-900">Salary</label>
         <div class="mt-2.5">
