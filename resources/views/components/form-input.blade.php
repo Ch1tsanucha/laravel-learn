@@ -1,0 +1,1 @@
+<input {{$attributes->merge(['class' => 'border-2 border-grey-500 block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 placeholder:text-gray-400'])}} type="text" autocomplete="organization">

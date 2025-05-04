@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\registerController;
 use App\Models\Employer;
 use Illuminate\Support\Facades\Route;
 use App\Models\Jobs;
@@ -15,13 +16,20 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/jobs', [JobController::class,'index']);
-Route::get('/jobs/create', [JobController::class,'create_page']);
-Route::post('/jobs',[JobController::class,'create']);
-Route::delete('/jobs/{id}',[JobController::class,'destroy']);
-Route::get('/jobs/update/{id}', [JobController::class,'update_page']);
-Route::get('/jobs/{id}',[JobController::class,'show']);
-Route::put('/jobs/update/{id}',[JobController::class,'update']);
+Route::get('/jobs', [JobController::class, 'index']);
+Route::get('/jobs/create', [JobController::class, 'create_page']);
+Route::post('/jobs', [JobController::class, 'create']);
+Route::delete('/jobs/{id}', [JobController::class, 'destroy']);
+Route::get('/jobs/update/{id}', [JobController::class, 'update_page']);
+Route::get('/jobs/{id}', [JobController::class, 'show']);
+Route::put('/jobs/update/{id}', [JobController::class, 'update']);
+Route::post('/register', [registerController::class, 'create']);
+Route::get('/login', function () {
+    return view('login');
+});
+Route::get('/register', function () {
+    return view('register');
+});
 Route::get('/contact', function () {
-    return view('contact',['users'=>Employer::all()]);
+    return view('contact', ['users' => Employer::all()]);
 });

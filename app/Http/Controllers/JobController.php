@@ -8,10 +8,10 @@ use App\Models\Jobs;
 class JobController extends Controller
 {
     public function index()
-{
-    $jobs = Jobs::with('employer.job')->latest()->simplePaginate(10) ?? collect(); // Ensure it's a collection
-    return view('jobs.index', compact('jobs'));
-}
+    {
+        $jobs = Jobs::with('employer.job')->latest()->simplePaginate(10) ?? collect(); // Ensure it's a collection
+        return view('jobs.index', compact('jobs'));
+    }
 
 
     public function create_page()
@@ -58,25 +58,25 @@ class JobController extends Controller
             return redirect('/jobs');
         }
 
-         return response()->json(['message' => 'Item not found'], 404);
+        return response()->json(['message' => 'Item not found'], 404);
         // return redirect('/jobs');
     }
 
     public function update(Request $request, $id)
-{
+    {
 
-    $job = Jobs::find($id);
+        $job = Jobs::find($id);
 
-    if ($job) {
-        $job->update([
-            'title' => $request->input('title'),
-            'salary' => $request->input('salary'),
-        ]);
-        return redirect('/jobs');
+        if ($job) {
+            $job->update([
+                'title' => $request->input('title'),
+                'salary' => $request->input('salary'),
+            ]);
+            return redirect('/jobs');
+        }
+
+        return response()->json(['message' => 'Job not found'], 404);
     }
-
-    return response()->json(['message' => 'Job not found'], 404);
-}
 
 
 }
